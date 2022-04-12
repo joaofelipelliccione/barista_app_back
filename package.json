@@ -4,7 +4,10 @@
   "description": "Backend do aplicativo!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node ./dist/src/server.js",
+    "recreateDB": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
+    "dev": "ts-node-dev --respawn --ignore-watch node_modules src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -30,6 +33,10 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "express": "^4.17.3"
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.18.0",
+    "sequelize-cli": "^6.4.1"
   }
 }
