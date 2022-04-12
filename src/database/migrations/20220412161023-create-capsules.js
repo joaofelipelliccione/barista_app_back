@@ -28,7 +28,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      capsule_roast_level: {
+      capsule_roasting_level: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
@@ -64,11 +64,31 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
+      dbl_expresso_80: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
       lungo_110: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
+      gran_lungo_150: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      coffe_230: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      carafe_535: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
       cappuccino: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      dbl_cappuccino: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },

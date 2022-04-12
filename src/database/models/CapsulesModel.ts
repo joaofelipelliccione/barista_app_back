@@ -14,7 +14,7 @@ class CapsulesModel extends Model {
 
   declare capsuleIntensity: number;
 
-  declare capsuleRoastLevel: number;
+  declare capsuleRoastingLevel: number;
 
   declare capsuleBitternessLevel: number;
 
@@ -32,9 +32,19 @@ class CapsulesModel extends Model {
 
   declare expresso40: boolean;
 
+  declare dblExpresso80: boolean;
+
   declare lungo110: boolean;
 
+  declare granLungo150: boolean;
+
+  declare coffe230: boolean;
+
+  declare carafe535: boolean;
+
   declare cappuccino: boolean;
+
+  declare dblCappuccino: boolean;
 
   declare capsuleImgSrc: string;
 
@@ -69,7 +79,7 @@ CapsulesModel.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    capsuleRoastLevel: {
+    capsuleRoastingLevel: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -105,11 +115,31 @@ CapsulesModel.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    dblExpresso80: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
     lungo110: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    granLungo150: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    coffe230: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    carafe535: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
     cappuccino: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    dblCappuccino: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
