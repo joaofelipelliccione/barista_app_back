@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node ./dist/src/server.js",
     "recreateDB": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
+    "prestart": "tsc && npm run recreateDB",
+    "start": "node ./dist/src/server.js",
     "dev": "ts-node-dev --respawn --ignore-watch node_modules src/server.ts"
   },
   "repository": {
