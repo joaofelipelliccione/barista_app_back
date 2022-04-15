@@ -30,6 +30,12 @@ describe('1) Capsules Routes:', () => {
 
       expect(chaiHttpResponse).to.have.status(200);
       expect(chaiHttpResponse.body).to.have.lengthOf(2);
+
+      expect(chaiHttpResponse.body[0].capsuleId).lessThanOrEqual(30);
+      expect(chaiHttpResponse.body[0].capsuleType).to.equal('Original');
+
+      expect(chaiHttpResponse.body[1].capsuleId).greaterThanOrEqual(31);
+      expect(chaiHttpResponse.body[1].capsuleType).to.equal('Vertuo');
     });
   });
 });
