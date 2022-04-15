@@ -5,7 +5,7 @@ import chaiHttp from 'chai-http'; // Permite a realização de requisições p/ 
 import { app } from '../app';
 
 import CapsulesModel from '../database/models/CapsulesModel';
-import { mockAllCapsules } from './mocks/capsules';
+import { mockAllCapsules, mockAllOriginalCapsules, mockAllVertuoCapsules } from './mocks/capsules';
 
 import { Response } from 'superagent'; // Tipo que a response oriunda do Chai HTTP deverá apresentar.
 
@@ -30,11 +30,60 @@ describe('1) Capsules Routes:', () => {
 
       expect(chaiHttpResponse).to.have.status(200);
       expect(chaiHttpResponse.body).to.have.lengthOf(2);
+      expect(chaiHttpResponse.body[0]).to.have.keys('capsuleId', 'capsuleType', 'capsuleLine', 'capsuleName', 'decaf', 'capsuleIntensity', 'capsuleRoastingLevel', 'capsuleBitternessLevel', 'capsuleAcidityLevel', 'capsuleRobustnessLevel', 'capsuleAspects', 'capsuleAromaticNotes', 'capsuleOrigin', 'ristretto25', 'expresso40', 'dblExpresso80', 'lungo110', 'granLungo150', 'coffe230', 'carafe535', 'cappuccino', 'dblCappuccino', 'capsuleImgSrc', 'backgroundImgSrc');
 
       expect(chaiHttpResponse.body[0].capsuleId).lessThanOrEqual(30);
       expect(chaiHttpResponse.body[0].capsuleType).to.equal('Original');
 
       expect(chaiHttpResponse.body[1].capsuleId).greaterThanOrEqual(31);
+      expect(chaiHttpResponse.body[1].capsuleType).to.equal('Vertuo');
+    });
+  });
+
+  describe('1.2) Método GET para /capsules/Original:', () => {
+    before(async () => {
+      sinon.stub(CapsulesModel, 'findAll').resolves(mockAllOriginalCapsules as CapsulesModel[]);
+    });
+  
+    after(() => {
+      (CapsulesModel.findAll as sinon.SinonStub).restore();
+    });
+
+    it("1.2.1) Retorna, apenas, capsulas do tipo 'Original'.", async () => {
+      chaiHttpResponse = await chai.request(app).get('/capsules/Original');
+
+      expect(chaiHttpResponse).to.have.status(200);
+      expect(chaiHttpResponse.body).to.have.lengthOf(2);
+      expect(chaiHttpResponse.body[0]).to.have.keys('capsuleId', 'capsuleType', 'capsuleLine', 'capsuleName', 'decaf', 'capsuleIntensity', 'capsuleRoastingLevel', 'capsuleBitternessLevel', 'capsuleAcidityLevel', 'capsuleRobustnessLevel', 'capsuleAspects', 'capsuleAromaticNotes', 'capsuleOrigin', 'ristretto25', 'expresso40', 'dblExpresso80', 'lungo110', 'granLungo150', 'coffe230', 'carafe535', 'cappuccino', 'dblCappuccino', 'capsuleImgSrc', 'backgroundImgSrc');
+
+      expect(chaiHttpResponse.body[0].capsuleId).to.equal(1);
+      expect(chaiHttpResponse.body[0].capsuleType).to.equal('Original');
+
+      expect(chaiHttpResponse.body[1].capsuleId).to.equal(30);
+      expect(chaiHttpResponse.body[1].capsuleType).to.equal('Original');
+    });
+  });
+
+  describe('1.3) Método GET para /capsules/Vertuo:', () => {
+    before(async () => {
+      sinon.stub(CapsulesModel, 'findAll').resolves(mockAllVertuoCapsules as CapsulesModel[]);
+    });
+  
+    after(() => {
+      (CapsulesModel.findAll as sinon.SinonStub).restore();
+    });
+
+    it("1.3.1) Retorna, apenas, capsulas do tipo 'Vertuo'.", async () => {
+      chaiHttpResponse = await chai.request(app).get('/capsules/Vertuo');
+
+      expect(chaiHttpResponse).to.have.status(200);
+      expect(chaiHttpResponse.body).to.have.lengthOf(2);
+      expect(chaiHttpResponse.body[0]).to.have.keys('capsuleId', 'capsuleType', 'capsuleLine', 'capsuleName', 'decaf', 'capsuleIntensity', 'capsuleRoastingLevel', 'capsuleBitternessLevel', 'capsuleAcidityLevel', 'capsuleRobustnessLevel', 'capsuleAspects', 'capsuleAromaticNotes', 'capsuleOrigin', 'ristretto25', 'expresso40', 'dblExpresso80', 'lungo110', 'granLungo150', 'coffe230', 'carafe535', 'cappuccino', 'dblCappuccino', 'capsuleImgSrc', 'backgroundImgSrc');
+
+      expect(chaiHttpResponse.body[0].capsuleId).to.equal(31);
+      expect(chaiHttpResponse.body[0].capsuleType).to.equal('Vertuo');
+
+      expect(chaiHttpResponse.body[1].capsuleId).to.equal(60);
       expect(chaiHttpResponse.body[1].capsuleType).to.equal('Vertuo');
     });
   });
