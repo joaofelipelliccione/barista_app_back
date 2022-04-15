@@ -56,31 +56,31 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      ristretto_25: {
+      ristretto25: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      expresso_40: {
+      expresso40: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      dbl_expresso_80: {
+      dbl_expresso80: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      lungo_110: {
+      lungo110: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      gran_lungo_150: {
+      gran_lungo150: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      coffe_230: {
+      coffe230: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      carafe_535: {
+      carafe535: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
