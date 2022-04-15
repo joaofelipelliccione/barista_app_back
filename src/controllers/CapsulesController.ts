@@ -7,7 +7,7 @@ const findAll = async (req: Request, res: Response, next: NextFunction) => {
 
   try {
     if (capsuleType !== undefined) {
-      const capsulesFromChosenType = await CapsulesService.findAllByParam(capsuleType);
+      const capsulesFromChosenType = await CapsulesService.findAllByCapsuleType(capsuleType);
       return res.status(StatusCodes.OK).json(capsulesFromChosenType);
     }
 

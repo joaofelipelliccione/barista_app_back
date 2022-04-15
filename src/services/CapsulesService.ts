@@ -5,7 +5,7 @@ const findAll = async (): Promise<CapsulesModel[]> => {
   return allCapsules;
 };
 
-const findAllByParam = async (capsuleType: string): Promise<CapsulesModel[]> => { // Lazy Loading
+const findAllByCapsuleType = async (capsuleType: string): Promise<CapsulesModel[]> => { // Lazy Loading
   const capsulesFromChosenType = await CapsulesModel.findAll({
     where: { capsuleType: capsuleType === 'Original' ? 'Original' : 'Vertuo' },
   });
@@ -20,8 +20,16 @@ const findByPk = async (capsuleId: string): Promise<CapsulesModel | null> => {
   return capsule as CapsulesModel;
 };
 
+// const findByCapsuleName = async (capsuleId: string): Promise<CapsulesModel | null> => {
+//   const capsule = await CapsulesModel.findByPk(Number(capsuleId));
+
+//   if (capsule === null) return null;
+//   return capsule as CapsulesModel;
+// };
+
 export default {
   findAll,
-  findAllByParam,
+  findAllByCapsuleType,
   findByPk,
+  // findByCapsuleName,
 };
