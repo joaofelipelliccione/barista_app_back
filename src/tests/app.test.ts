@@ -16,15 +16,15 @@ const { expect } = chai;
 describe('1) Capsules Routes:', () => {
   let chaiHttpResponse: Response;
 
-  before(async () => { // Antes de cada it() ou describe(), realizado dentro do respectivo describe(), o retorno de CapsulesModel.findAll() passa a ser fixo e previsível.
-    sinon.stub(CapsulesModel, 'findAll').resolves(mockAllCapsules as CapsulesModel[]);
-  });
-
-  after(() => { // Após de cada it() ou describe(), realizado dentro do respectivo describe(), o retorno de CapsulesModel.findAll() volta a ser variável e não previsível.
-    (CapsulesModel.findAll as sinon.SinonStub).restore();
-  });
-
   describe('1.1) Método GET para /capsules:', () => {
+    before(async () => { // Antes de cada it() ou describe(), realizado dentro do respectivo describe(), o retorno de CapsulesModel.findAll() passa a ser fixo e previsível.
+      sinon.stub(CapsulesModel, 'findAll').resolves(mockAllCapsules as CapsulesModel[]);
+    });
+  
+    after(() => { // Após de cada it() ou describe(), realizado dentro do respectivo describe(), o retorno de CapsulesModel.findAll() volta a ser variável e não previsível.
+      (CapsulesModel.findAll as sinon.SinonStub).restore();
+    });
+
     it("1.1.1) Retorna capsulas do tipo 'Original' e 'Vertuo'.", async () => {
       chaiHttpResponse = await chai.request(app).get('/capsules');
 
