@@ -13,7 +13,15 @@ const findAllByParam = async (capsuleType: string): Promise<CapsulesModel[]> => 
   return capsulesFromChosenType as CapsulesModel[];
 };
 
+const findByPk = async (capsuleId: string): Promise<CapsulesModel | null> => {
+  const capsule = await CapsulesModel.findByPk(Number(capsuleId));
+
+  if (capsule === null) return null;
+  return capsule as CapsulesModel;
+};
+
 export default {
   findAll,
   findAllByParam,
+  findByPk,
 };

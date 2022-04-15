@@ -18,6 +18,22 @@ const findAll = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const findByPk = async (req: Request, res: Response, next: NextFunction) => {
+  const { capsuleId } = req.params;
+
+  try {
+    const capsule = await CapsulesService.findByPk(capsuleId);
+    if (capsule === null) {
+      return next({ code: StatusCodes.NOT_FOUND, message: 'No capsule with such id.' });
+    }
+
+    return res.status(StatusCodes.OK).json(capsule);
+  } catch (e) {
+    next(e);
+  }
+};
+
 export default {
   findAll,
+  findByPk,
 };
