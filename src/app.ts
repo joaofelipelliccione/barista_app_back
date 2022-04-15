@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 
 import pingRoutes from './routes/pingRoutes';
+import capsulesRoutes from './routes/capsulesRoutes';
 
 import errorMw from './middlewares/errorMw';
 
@@ -29,6 +30,7 @@ class App {
 
   private routes(): void { // Método responsável pela disponibilização das rotas da API.
     this.app.use('/ping', pingRoutes);
+    this.app.use('/capsules', capsulesRoutes);
 
     this.app.use(errorMw);
   }
