@@ -33,7 +33,19 @@ const findByPk = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const findByCapsuleName = async (req: Request, res: Response, next: NextFunction) => { // http://localhost:3001/capsules/search?capsuleName=vOLlUtO
+  const { capsuleName } = req.query;
+
+  try {
+    const capsule = await CapsulesService.findByCapsuleName(String(capsuleName));
+    return res.status(StatusCodes.OK).json(capsule);
+  } catch (e) {
+    next(e);
+  }
+};
+
 export default {
   findAll,
   findByPk,
+  findByCapsuleName,
 };

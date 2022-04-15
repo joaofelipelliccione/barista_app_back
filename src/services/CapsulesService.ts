@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import CapsulesModel from '../database/models/CapsulesModel';
 
 const findAll = async (): Promise<CapsulesModel[]> => {
@@ -20,16 +21,19 @@ const findByPk = async (capsuleId: string): Promise<CapsulesModel | null> => {
   return capsule as CapsulesModel;
 };
 
-// const findByCapsuleName = async (capsuleId: string): Promise<CapsulesModel | null> => {
-//   const capsule = await CapsulesModel.findByPk(Number(capsuleId));
+const findByCapsuleName = async (capsuleName: string): Promise<CapsulesModel[]> => {
+  const capsule = await CapsulesModel.findAll({
+    where: {
+      capsuleName: { [Op.substring]: capsuleName }, // LIKE '%capsuleName%' --> Confere se a chave "capsuleName" apresenta o conteúdo pesquisado.
+    },
+  });
 
-//   if (capsule === null) return null;
-//   return capsule as CapsulesModel;
-// };
+  return capsule as CapsulesModel[];
+};
 
 export default {
   findAll,
   findAllByCapsuleType,
   findByPk,
-  // findByCapsuleName,
+  findByCapsuleName,
 };
