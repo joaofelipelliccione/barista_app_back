@@ -5,7 +5,7 @@ import chaiHttp from 'chai-http'; // Permite a realização de requisições p/ 
 import { app } from '../app';
 
 import CapsulesModel from '../database/models/CapsulesModel';
-import { mockAllCapsules, mockAllOriginalCapsules, mockAllVertuoCapsules } from './mocks/capsules';
+import { mockAllCapsules, mockAllOriginalCapsules, mockAllVertuoCapsules, mockCapsuleWithId5 } from './mocks/capsules';
 
 import { Response } from 'superagent'; // Tipo que a response oriunda do Chai HTTP deverá apresentar.
 
@@ -85,6 +85,29 @@ describe('1) Capsules Routes:', () => {
 
       expect(chaiHttpResponse.body[1].capsuleId).to.equal(60);
       expect(chaiHttpResponse.body[1].capsuleType).to.equal('Vertuo');
+    });
+  });
+
+  describe('1.4) Método GET para /capsules/id/5:', () => {
+    it("1.4.1) Retorna, apenas, a capsula 5.", async () => {
+      before(async () => {
+        sinon.stub(CapsulesModel, 'findByPk').resolves(mockCapsuleWithId5 as CapsulesModel);
+      });
+    
+      chaiHttpResponse = await chai.request(app).get('/capsules/id/5');
+
+      expect(chaiHttpResponse).to.have.status(200);
+      expect(chaiHttpResponse.body).to.have.keys('capsuleId', 'capsuleType', 'capsuleLine', 'capsuleName', 'decaf', 'capsuleIntensity', 'capsuleRoastingLevel', 'capsuleBitternessLevel', 'capsuleAcidityLevel', 'capsuleRobustnessLevel', 'capsuleAspects', 'capsuleAromaticNotes', 'capsuleOrigin', 'ristretto25', 'expresso40', 'dblExpresso80', 'lungo110', 'granLungo150', 'coffe230', 'carafe535', 'cappuccino', 'dblCappuccino', 'capsuleImgSrc', 'backgroundImgSrc');
+
+      expect(chaiHttpResponse.body.capsuleId).to.equal(5);
+    });
+
+    it("1.4.2) Retorna um erro por ter passado um capsuleId inexistente.", async () => {
+      chaiHttpResponse = await chai.request(app).get('/capsules/id/500');
+
+      expect(chaiHttpResponse).to.have.status(404);
+      expect(chaiHttpResponse.body).to.have.keys('code', 'message');
+      expect(chaiHttpResponse.body.message).to.equal('No capsule with such id.');
     });
   });
 });

@@ -162,3 +162,30 @@ export const mockAllVertuoCapsules = [
 		backgroundImgSrc: 'https://storage.googleapis.com/gcsb-nespresso-app-images/60-vertuo-capsule.webp',
   }
 ];
+
+export const mockCapsuleWithId5 = {
+	capsuleId: 5,
+	capsuleType: 'Original',
+	capsuleLine: 'Ispirazione Italiana',
+	capsuleName: 'Venezia',
+	decaf: false,
+	capsuleIntensity: 8,
+	capsuleRoastingLevel: 4,
+	capsuleBitternessLevel: 3,
+	capsuleAcidityLevel: 1,
+	capsuleRobustnessLevel: 4,
+	capsuleAspects: 'Harmonioso e equilibrado',
+	capsuleAromaticNotes: 'Torrado e caramelizado',
+	capsuleOrigin: 'Brasil, Colômbia e África',
+	ristretto25: true,
+	expresso40: true,
+	dblExpresso80: false,
+	lungo110: false,
+	granLungo150: false,
+	coffe230: false,
+	carafe535: false,
+	cappuccino: false,
+	dblCappuccino: false,
+	capsuleImgSrc: 'https://storage.googleapis.com/gcsb-nespresso-app-images/5-original-capsule.webp',
+	backgroundImgSrc: 'https://storage.googleapis.com/gcsb-nespresso-app-images/5-original-background.webp',
+};
