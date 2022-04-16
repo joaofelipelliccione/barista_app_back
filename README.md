@@ -19,5 +19,5 @@ O respectivo backend foi dockerizado e "deployado" no Heroku®, podendo ser aces
 
 ### Observação
 
-Como o respectivo backend foi "deployado" utilizando um dyno grátis do Heroku®, caso a aplicação não seja acessada após 30 minutos ela entrará em "sleep mode".
+Como o respectivo backend foi "deployado" utilizando um dyno grátis do Heroku®, caso a aplicação não seja acessada após 30 minutos ela entrará em _sleep mode_.
 Nesse caso, ao acessar tal aplicação novamente, é necessário uma espera inicial de 20 segundos antes que a primeira requisição seja concluída.
