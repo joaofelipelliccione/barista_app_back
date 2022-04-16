@@ -1,5 +1,5 @@
 {
-  "name": "nespresso_app_back",
+  "name": "barista_app_back",
   "version": "1.0.0",
   "description": "Backend do aplicativo!",
   "main": "index.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joaofelipelliccione/nespresso_app_back.git"
+    "url": "git+https://github.com/joaofelipelliccione/barista_app_back.git"
   },
   "author": "João Felipe Pelliccione",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/joaofelipelliccione/nespresso_app_back/issues"
+    "url": "https://github.com/joaofelipelliccione/barista_app_back/issues"
   },
-  "homepage": "https://github.com/joaofelipelliccione/nespresso_app_back#readme",
+  "homepage": "https://github.com/joaofelipelliccione/barista_app_back#readme",
   "devDependencies": {
     "@types/chai": "^4.3.1",
     "@types/chai-http": "^4.2.0",

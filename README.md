@@ -1,1 +1,1 @@
-# nespresso_app_back
+# barista_app_back
