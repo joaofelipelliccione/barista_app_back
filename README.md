@@ -3,6 +3,7 @@
 # Contexto
 
 API Node.js + Typescript + Sequelize que apresenta endpoints voltados à listagem das características de todas as capsulas Nespresso®.
+É importante pontuar que o banco de dados foi modelado por mim, com base nas informações disponíveis no [website oficial da Nespresso®](https://www.nespresso.com/br/pt/order/capsules/original).
 O respectivo backend foi dockerizado e "deployado" no Heroku®, podendo ser acessado a partir dos endpoints abaixo.
 
 ---
@@ -21,3 +22,4 @@ O respectivo backend foi dockerizado e "deployado" no Heroku®, podendo ser aces
 
 Como o respectivo backend foi "deployado" utilizando um dyno grátis do Heroku®, caso a aplicação não seja acessada após 30 minutos ela entrará em _sleep mode_.
 Nesse caso, ao acessar tal aplicação novamente, é necessário uma espera inicial de 20 segundos antes que a primeira requisição seja concluída.
+
