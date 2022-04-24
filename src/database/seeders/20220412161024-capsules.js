@@ -945,7 +945,7 @@ module.exports = {
         capsule_id: 37,
         capsule_type: 'Vertuo',
         capsule_line: 'Espresso',
-        capsule_name: 'Altissio',
+        capsule_name: 'Altissio Decaffeinato',
         decaf: true,
         capsule_intensity: 9,
         capsule_roasting_level: 3,
