@@ -17,11 +17,12 @@ O respectivo backend foi dockerizado e "deployado" no Heroku®, podendo ser aces
  - **Listagem das características de capsulas do tipo Original®** - [https://barista-app-back.herokuapp.com/capsules/Original](https://barista-app-back.herokuapp.com/capsules/Original)
  - **Listagem das características de capsulas do tipo Vertuo®** - [https://barista-app-back.herokuapp.com/capsules/Vertuo](https://barista-app-back.herokuapp.com/capsules/Vertuo)
  - **Listagem das características de uma capsula específica** - [https://barista-app-back.herokuapp.com/capsules/id/5](https://barista-app-back.herokuapp.com/capsules/id/5)
- - **Listagem das características de capsulas pesquisadas por nome** - [https://barista-app-back.herokuapp.com/capsules/search?capsuleName=Volluto](https://barista-app-back.herokuapp.com/capsules/search?capsuleName=Volluto)
+ - **Listagem das características de capsulas pesquisadas por nome** - [https://barista-app-back.herokuapp.com/capsules/search?capsuleType=All&capsuleName=Volluto](https://barista-app-back.herokuapp.com/capsules/search?capsuleType=All&capsuleName=Volluto)
+ - **Listagem das características de capsulas, Original®, pesquisadas por nome** - [https://barista-app-back.herokuapp.com/capsules/search?capsuleType=Original&capsuleName=Volluto](https://barista-app-back.herokuapp.com/capsules/search?capsuleType=Original&capsuleName=Volluto)
+ - **Listagem das características de capsulas, Vertuo®, pesquisadas por nome** - [https://barista-app-back.herokuapp.com/capsules/search?capsuleType=Vertuo&capsuleName=Hazelino](https://barista-app-back.herokuapp.com/capsules/search?capsuleType=Vertuo&capsuleName=Hazelino)
 ---
 
 ### Observação
 
 Como o respectivo backend foi "deployado" utilizando um dyno grátis do Heroku®, caso a aplicação não seja acessada após 30 minutos ela entrará em _sleep mode_.
 Nesse caso, ao acessar tal aplicação novamente, é necessário uma espera inicial de 20 segundos antes que a primeira requisição seja concluída.
-
