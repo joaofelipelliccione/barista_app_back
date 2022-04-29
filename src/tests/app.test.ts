@@ -5,7 +5,8 @@ import chaiHttp from 'chai-http'; // Permite a realização de requisições p/ 
 import { app } from '../app';
 
 import CapsulesModel from '../database/models/CapsulesModel';
-import { mockAllCapsules, mockAllOriginalCapsules, mockAllVertuoCapsules, mockCapsuleWithId5, mockVollutoCapsules } from './mocks/capsules';
+import { mockAllCapsules, mockAllOriginalCapsules, mockAllVertuoCapsules,
+  mockCapsuleWithId5, mockVollutoCapsules, mockHazelinoMuffinCapsules, } from './mocks/capsules';
 
 import { Response } from 'superagent'; // Tipo que a response oriunda do Chai HTTP deverá apresentar.
 
@@ -111,7 +112,7 @@ describe('1) Capsules Routes:', () => {
     });
   });
 
-  describe('1.5) Método GET para /capsules/search?capsuleName=vOLlUtO:', () => {
+  describe('1.5) Método GET para /capsules/search?capsuleType=All&capsuleName=vOLlUtO:', () => {
     before(async () => {
       sinon.stub(CapsulesModel, 'findAll').resolves(mockVollutoCapsules as CapsulesModel[]);
     });
@@ -121,7 +122,7 @@ describe('1) Capsules Routes:', () => {
     });
 
     it("1.5.1) Retorna, apenas, capsulas Volluto.", async () => {
-      chaiHttpResponse = await chai.request(app).get('/capsules/search?capsuleName=vOLlUtO');
+      chaiHttpResponse = await chai.request(app).get('/capsules/search?capsuleType=All&capsuleName=vOLlUtO');
 
       expect(chaiHttpResponse).to.have.status(200);
       expect(chaiHttpResponse.body).to.have.lengthOf(2);
@@ -134,6 +135,62 @@ describe('1) Capsules Routes:', () => {
       expect(chaiHttpResponse.body[1].capsuleId).to.equal(24);
       expect(chaiHttpResponse.body[1].capsuleType).to.equal('Original');
       expect(chaiHttpResponse.body[1].capsuleName).to.equal('Volluto Decaffeinato');
+    });
+  });
+
+  describe('1.6) Método GET para /capsules/search?capsuleType=All&capsuleName=HaZElinO mUFfiN:', () => {
+    before(async () => {
+      sinon.stub(CapsulesModel, 'findAll').resolves(mockHazelinoMuffinCapsules as CapsulesModel[]);
+    });
+  
+    after(() => {
+      (CapsulesModel.findAll as sinon.SinonStub).restore();
+    });
+
+    it("1.6.1) Retorna, apenas, a capsula Hazelino Muffin.", async () => {
+      chaiHttpResponse = await chai.request(app).get('/capsules/search?capsuleType=All&capsuleName=HaZElinO mUFfiN');
+
+      expect(chaiHttpResponse).to.have.status(200);
+      expect(chaiHttpResponse.body).to.have.lengthOf(1);
+      expect(chaiHttpResponse.body[0]).to.have.keys('capsuleId', 'capsuleType', 'capsuleLine', 'capsuleName', 'decaf', 'capsuleIntensity', 'capsuleRoastingLevel', 'capsuleBitternessLevel', 'capsuleAcidityLevel', 'capsuleRobustnessLevel', 'capsuleAspects', 'capsuleAromaticNotes', 'capsuleOrigin', 'ristretto25', 'expresso40', 'dblExpresso80', 'lungo110', 'granLungo150', 'coffe230', 'carafe535', 'cappuccino', 'dblCappuccino', 'capsuleImgSrc', 'backgroundImgSrc');
+
+      expect(chaiHttpResponse.body[0].capsuleId).to.equal(60);
+      expect(chaiHttpResponse.body[0].capsuleType).to.equal('Vertuo');
+      expect(chaiHttpResponse.body[0].capsuleName).to.equal('Hazelino Muffin');
+    });
+  });
+
+  describe('1.7) Método GET para /capsules/search?capsuleType=Vertuo&capsuleName=vOLlUtO:', () => {
+    before(async () => {
+      sinon.stub(CapsulesModel, 'findAll').resolves([]);
+    });
+  
+    after(() => {
+      (CapsulesModel.findAll as sinon.SinonStub).restore();
+    });
+
+    it("1.7.1) Retorna vazio quando Volluto for pesquisada dentre as Vertuo.", async () => {
+      chaiHttpResponse = await chai.request(app).get('/capsules/search?capsuleType=Vertuo&capsuleName=vOLlUtO');
+
+      expect(chaiHttpResponse).to.have.status(200);
+      expect(chaiHttpResponse.body).to.have.lengthOf(0);
+    });
+  });
+
+  describe('1.8) Método GET para /capsules/search?capsuleType=Vertuo&capsuleName=vOLlUtO:', () => {
+    before(async () => {
+      sinon.stub(CapsulesModel, 'findAll').resolves([]);
+    });
+  
+    after(() => {
+      (CapsulesModel.findAll as sinon.SinonStub).restore();
+    });
+
+    it("1.8.1) Retorna vazio quando Hazelino Muffin for pesquisada dentre as Original.", async () => {
+      chaiHttpResponse = await chai.request(app).get('/capsules/search?capsuleType=Original&capsuleName=HaZElinO mUFfiN');
+
+      expect(chaiHttpResponse).to.have.status(200);
+      expect(chaiHttpResponse.body).to.have.lengthOf(0);
     });
   });
 });

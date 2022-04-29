@@ -244,3 +244,32 @@ export const mockVollutoCapsules = [
 		backgroundImgSrc: 'https://storage.googleapis.com/gcsb-nespresso-app-images/24-original-background.jpg',
   }
 ];
+
+export const mockHazelinoMuffinCapsules = [
+	{
+		capsuleId: 60,
+		capsuleType: 'Vertuo',
+		capsuleLine: 'Barista Creations',
+		capsuleName: 'Hazelino Muffin',
+		decaf: false,
+		capsuleIntensity: 6,
+		capsuleRoastingLevel: 2,
+		capsuleBitternessLevel: 1,
+		capsuleAcidityLevel: 1,
+		capsuleRobustnessLevel: 2,
+		capsuleAspects: 'Adocicado e aveludado',
+		capsuleAromaticNotes: 'Avelã',
+		capsuleOrigin: 'Brasil e Etiópia',
+		ristretto25: false,
+		expresso40: false,
+		dblExpresso80: false,
+		lungo110: false,
+		granLungo150: false,
+		coffe230: true,
+		carafe535: false,
+		cappuccino: false,
+		dblCappuccino: false,
+		capsuleImgSrc: 'https://storage.googleapis.com/gcsb-nespresso-app-images/60-vertuo-capsule.webp',
+		backgroundImgSrc: 'https://storage.googleapis.com/gcsb-nespresso-app-images/60-vertuo-capsule.webp',
+	}
+];

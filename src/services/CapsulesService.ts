@@ -21,9 +21,23 @@ const findByPk = async (capsuleId: string): Promise<CapsulesModel | null> => {
   return capsule as CapsulesModel;
 };
 
-const findByCapsuleName = async (capsuleName: string): Promise<CapsulesModel[]> => {
+const findByCapsuleName = async (
+  capsuleName: string,
+  capsuleType = 'All',
+): Promise<CapsulesModel[]> => {
+  if (capsuleType === 'All') {
+    const capsule = await CapsulesModel.findAll({
+      where: {
+        capsuleName: { [Op.substring]: capsuleName }, // LIKE '%capsuleName%' --> Confere se a chave "capsuleName" apresenta o conteúdo pesquisado.
+      },
+    });
+  
+    return capsule as CapsulesModel[];
+  }
+
   const capsule = await CapsulesModel.findAll({
     where: {
+      capsuleType,
       capsuleName: { [Op.substring]: capsuleName }, // LIKE '%capsuleName%' --> Confere se a chave "capsuleName" apresenta o conteúdo pesquisado.
     },
   });
